@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Роман Быков](https://up.htmlacademy.ru/react/10/user/427583).
-* Наставник: `Неизвестно`.
+* Наставник: [Иван Чернобук](https://htmlacademy.ru/profile/inchernobuk).
 
 ---
 
