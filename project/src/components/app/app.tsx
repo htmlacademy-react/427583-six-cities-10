@@ -1,24 +1,24 @@
 import { AppRoute, AuthorizationStatus } from '../../../src/const';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PlaceCardType } from '../../types/types';
+import { Offer } from '../../types/types';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
-import PropertyPage from '../../pages/property-page/property-page';
+import OfferPage from '../../pages/offer-page/offer-page';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  placeCards: PlaceCardType[]
+  offers: Offer[]
 }
 
-function App({ placeCards }: AppProps): JSX.Element {
+function App({ offers }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage placeCards={placeCards} />}
+          element={<MainPage offers={offers} />}
         />
         <Route
           path={AppRoute.Login}
@@ -27,17 +27,17 @@ function App({ placeCards }: AppProps): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
-            >
-              <FavoritesPage placeCards={placeCards} />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesPage offers={offers} />
             </PrivateRoute>
           }
         />
-        <Route
-          path={AppRoute.Room}
-          element={<PropertyPage placeCards={placeCards} isLoggedIn={false} />}
-        />
+        <Route path={AppRoute.Offer}>
+          <Route
+            path=":id"
+            element={<OfferPage offers={offers} isLoggedIn={false} />}
+          />
+        </Route>
         <Route
           path="*"
           element={<NotFound />}

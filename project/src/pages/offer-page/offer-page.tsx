@@ -1,41 +1,41 @@
-import { PlaceCardType } from '../../types/types';
+import { Offer } from '../../types/types';
 import HeaderMain from '../../components/header-main/header-main';
-import NearPlacesPlaceCard from '../../components/near-places-place-card/near-places-place-card';
+import NearPlacesOfferCard from '../../components/near-places-offer-card/near-places-offer-card';
 import ReviewForm from '../../components/review-form/review-form';
 
 const MAX_NEAR_PLACES_VISIBLE = 3;
 
-type PropertyPageProps = {
-  placeCards: PlaceCardType[],
+type OfferPageProps = {
+  offers: Offer[],
   isLoggedIn: boolean,
 }
 
-export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps): JSX.Element {
+export default function OfferPage({ offers, isLoggedIn }: OfferPageProps): JSX.Element {
   return (
     <div className="page">
-      <HeaderMain isLoggedIn={isLoggedIn}/>
+      <HeaderMain isLoggedIn={isLoggedIn} />
 
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Studio"/>
+                <img className="property__image" src="img/room.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Studio"/>
+                <img className="property__image" src="img/apartment-01.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Studio"/>
+                <img className="property__image" src="img/apartment-02.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Studio"/>
+                <img className="property__image" src="img/apartment-03.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Studio"/>
+                <img className="property__image" src="img/studio-01.jpg" alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Studio"/>
+                <img className="property__image" src="img/apartment-01.jpg" alt="Studio" />
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{'width': '80%'}}></span>
+                  <span style={{ 'width': '80%' }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">4.8</span>
@@ -116,7 +116,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
                     Angelina
@@ -140,7 +140,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
                   <li className="reviews__item">
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
+                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
                       </div>
                       <span className="reviews__user-name">
                         Max
@@ -149,7 +149,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={{'width': '80%'}}></span>
+                          <span style={{ 'width': '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -160,7 +160,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
                     </div>
                   </li>
                 </ul>
-                {isLoggedIn && <ReviewForm />}
+                <ReviewForm />
               </section>
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function PropertyPage({placeCards, isLoggedIn}: PropertyPageProps
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {placeCards.slice(0, MAX_NEAR_PLACES_VISIBLE).map((placeCard: PlaceCardType) => (<NearPlacesPlaceCard key={placeCard.id} placeCard={placeCard}/>))}
+              {offers.slice(0, MAX_NEAR_PLACES_VISIBLE).map((offer: Offer) => (<NearPlacesOfferCard key={offer.id} offer={offer} />))}
             </div>
           </section>
         </div>

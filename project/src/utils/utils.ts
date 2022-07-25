@@ -1,6 +1,6 @@
 export enum HousingType {
   Apartment = 'Apartment',
-  PrivateRoom = 'Private Room',
+  PrivateRoom = 'Private Offer',
 }
 
 export function genetateUniqueId(): string {
