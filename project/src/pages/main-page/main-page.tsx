@@ -1,15 +1,15 @@
-import { PlaceCardType } from '../../types/types';
-import CitiesPlaceCard from '../../components/cities-place-card/cities-place-card';
+import { Offer } from '../../types/types';
+import CitiesOfferCard from '../../components/cities-offer-card/cities-offer-card';
 import HeaderMain from '../../components/header-main/header-main';
 
 type MainPageProps = {
-  placeCards: PlaceCardType[],
+  offers: Offer[],
 }
 
-export default function MainPage({ placeCards }: MainPageProps): JSX.Element {
+export default function MainPage({ offers }: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      <HeaderMain isLoggedIn/>
+      <HeaderMain isLoggedIn />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
@@ -69,7 +69,7 @@ export default function MainPage({ placeCards }: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {placeCards.map((placeCard: PlaceCardType) => (<CitiesPlaceCard key={placeCard.id} placeCard={placeCard}/>))}
+                {offers.map((offer: Offer) => (<CitiesOfferCard key={offer.id} offer={offer} />))}
               </div>
             </section>
             <div className="cities__right-section">

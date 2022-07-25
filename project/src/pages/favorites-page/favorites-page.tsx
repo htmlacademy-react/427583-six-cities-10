@@ -1,12 +1,14 @@
-import { PlaceCardType } from '../../types/types';
-import FavoritesPlaceCard from '../../components/favorites-place-card/favorites-place-card';
+import { Offer } from '../../types/types';
+import FavoritesOfferCard from '../../components/favorites-offer-card/favorites-offer-card';
 import HeaderMain from '../../components/header-main/header-main';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 type FavoritesPageProps = {
-  placeCards: PlaceCardType[],
+  offers: Offer[],
 };
 
-export default function FavoritesPage({placeCards}: FavoritesPageProps): JSX.Element {
+export default function FavoritesPage({ offers }: FavoritesPageProps): JSX.Element {
   function renderEmptyMain(): JSX.Element {
     return (
       <main className="page__main page__main--favorites page__main--favorites-empty">
@@ -39,7 +41,7 @@ export default function FavoritesPage({placeCards}: FavoritesPageProps): JSX.Ele
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {placeCards.slice(0, 2).map((placeCard) => <FavoritesPlaceCard placeCard={placeCard} key={placeCard.id} />)}
+                  {offers.slice(0, 2).map((offer) => <FavoritesOfferCard offer={offer} key={offer.id} />)}
                 </div>
               </li>
 
@@ -52,7 +54,7 @@ export default function FavoritesPage({placeCards}: FavoritesPageProps): JSX.Ele
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {placeCards.slice(2, 3).map((placeCard) => <FavoritesPlaceCard placeCard={placeCard} key={placeCard.id} />)}
+                  {offers.slice(2, 3).map((offer) => <FavoritesOfferCard offer={offer} key={offer.id} />)}
                 </div>
               </li>
             </ul>
@@ -63,15 +65,15 @@ export default function FavoritesPage({placeCards}: FavoritesPageProps): JSX.Ele
   }
 
   return (
-    <div className={`page-header ${placeCards.length === 0 ? 'page--favorites-empty' : ''}`}>
+    <div className={`page-header ${offers.length === 0 ? 'page--favorites-empty' : ''}`}>
       <HeaderMain isLoggedIn />
 
-      {placeCards.length > 0 ? renderFavoritesMain() : renderEmptyMain()}
+      {offers.length > 0 ? renderFavoritesMain() : renderEmptyMain()}
 
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link" to={AppRoute.Main}>
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        </Link>
       </footer>
     </div>
   );

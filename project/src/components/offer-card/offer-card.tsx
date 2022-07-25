@@ -1,4 +1,6 @@
-import { PlaceCardType } from '../../types/types';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { Offer } from '../../types/types';
 
 const RatingWidth = {
   0: 0,
@@ -9,12 +11,12 @@ const RatingWidth = {
   5: 100
 };
 
-type PlaceCardProps = {
-  placeCard: PlaceCardType,
+type OfferCardProps = {
+  offer: Offer,
   className?: string,
 }
 
-export default function PlaceCard({ placeCard, className }: PlaceCardProps): JSX.Element {
+export default function OfferCard({ offer, className }: OfferCardProps): JSX.Element {
   const isInBookmarks = Boolean(Math.round(Math.random()));
   const bookmarkClasses = [
     'place-card__bookmark-button',
@@ -26,7 +28,7 @@ export default function PlaceCard({ placeCard, className }: PlaceCardProps): JSX
     <div className={`${className} place-card__info`}>
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
-          <b className="place-card__price-value">&euro;{placeCard.price}</b>
+          <b className="place-card__price-value">&euro;{offer.price}</b>
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button className={bookmarkClasses} type="button">
@@ -38,14 +40,14 @@ export default function PlaceCard({ placeCard, className }: PlaceCardProps): JSX
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{'width': `${RatingWidth[placeCard.rating]}%`}}></span>
+          <span style={{ 'width': `${RatingWidth[offer.rating]}%` }}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="/">{placeCard.name}</a>
+        <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.name}</Link>
       </h2>
-      <p className="place-card__type">{placeCard.type}</p>
+      <p className="place-card__type">{offer.type}</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { PlaceCardType } from '../types/types';
+import { Offer } from '../types/types';
 import { genetateUniqueId } from '../utils/utils';
 
-export const mockCards: PlaceCardType[] = [
+export const mockOffers: Offer[] = [
   {
     id: genetateUniqueId(),
     image: 'img/apartment-01.jpg',
@@ -38,13 +38,4 @@ export const mockCards: PlaceCardType[] = [
     isPremium: true,
     rating: 5,
   },
-  {
-    id: genetateUniqueId(),
-    image: 'img/room.jpg',
-    price: 80,
-    name: 'Wood and stone place',
-    type: 'PrivateRoom',
-    isPremium: false,
-    rating: 4,
-  }
 ];
